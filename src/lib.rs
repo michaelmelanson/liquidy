@@ -68,8 +68,7 @@ extern "C" fn pub_render(argc: Argc, argv: *const AnyObject, _: AnyObject) -> An
         ));
     }
 
-    let template = arguments.at(0);
-    let template: Value = template.into();
+    let template: Value = arguments.at(0).into();
     let template = Template::from(template);
 
     let context = arguments.at(1);
