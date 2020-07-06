@@ -8,6 +8,8 @@ edition = "2018"
 
 [dependencies]
 "rutie" = { git = "https://github.com/danielpclark/rutie.git", features=["no-link"] }
+"serde" = { version = "1.0", features = ['derive'] }
+"serde_json" = "*"
 
 [lib]
 name = "liquidy"
