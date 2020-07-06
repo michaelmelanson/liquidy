@@ -54,3 +54,9 @@ Rust:    ... as string: Err(#<TypeError: Error converting to String>)
 Rust:    ... as number: Ok(97)
 => 97
 ```
+
+## Organization
+
+* `bin`: Shell scripts for running the project. The important one is `bin/console` which starts an IRB shell with the gem loaded.
+* `lib`: The Ruby code that loads the module.
+* `src`: The Rust implementation of the module. It defines a `LiquidityVM` class with an `evaluate` method that basically works like `eval`.
