@@ -1,0 +1,39 @@
+PATH
+  remote: .
+  specs:
+    liquidy (0.1.0)
+      rutie (~> 0.0.3)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ansi (1.5.0)
+    builder (3.2.4)
+    color_pound_spec_reporter (0.0.9)
+      bundler
+      minitest
+      minitest-reporters (>= 0.14.24)
+      rake
+    minitest (5.14.1)
+    minitest-reporters (1.4.2)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
+    rake (10.5.0)
+    ruby-progressbar (1.10.1)
+    rutie (0.0.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  color_pound_spec_reporter (~> 0.0.6)
+  liquidy!
+  minitest (~> 5.10)
+  minitest-reporters (~> 1.1)
+  rake (~> 10.0)
+
+BUNDLED WITH
+   2.1.2
