@@ -55,7 +55,6 @@ extern "C" fn pub_render(argc: Argc, argv: *const AnyObject, _: AnyObject) -> An
 
     unsafe {
         let p_argv: *const Value = mem::transmute(argv);
-
         rb_scan_args(argc, p_argv, str_to_cstring("*").as_ptr(), &args)
     };
 
