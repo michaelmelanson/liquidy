@@ -25,17 +25,16 @@ pub enum Node {
 
 pub fn parse_template(template: String) -> Result<Intermediate, ParseError> {
     let mut intermediate = Intermediate::default();
-
     let mut current_span = String::new();
-    let mut chars = template.chars();
-
+    
     fn flush_current_span(current_span: &mut String, intermediate: &mut Intermediate) {
         if current_span.len() > 0 {
             intermediate.add_node(Node::Span(current_span.clone()));
             current_span.clear();
         }
     };
-
+    
+    let mut chars = template.chars();
     'main: loop {
         match chars.next() {
             None => break 'main, // end of file
