@@ -29,6 +29,13 @@ pub fn parse_template(template: String) -> Result<Intermediate, ParseError> {
     let mut current_span = String::new();
     let mut chars = template.chars();
 
+    fn flush_current_span(current_span: &mut String, intermediate: &mut Intermediate) {
+        if current_span.len() > 0 {
+            intermediate.add_node(Node::Span(current_span.clone()));
+            current_span.clear();
+        }
+    };
+
     'main: loop {
         match chars.next() {
             None => break 'main, // end of file
@@ -36,8 +43,7 @@ pub fn parse_template(template: String) -> Result<Intermediate, ParseError> {
             Some('{') => match chars.next() {
                 None => break,
                 Some('{') => {
-                    intermediate.add_node(Node::Span(current_span.clone()));
-                    current_span.clear();
+                    flush_current_span(&mut current_span, &mut intermediate);
 
                     intermediate.add_node(parse_expression(&mut chars)?);
                 }
@@ -50,10 +56,7 @@ pub fn parse_template(template: String) -> Result<Intermediate, ParseError> {
         }
     }
 
-    if current_span.len() > 0 {
-        intermediate.add_node(Node::Span(current_span.clone()));
-        current_span.clear();
-    }
+    flush_current_span(&mut current_span, &mut intermediate);
 
     Ok(intermediate)
 }
